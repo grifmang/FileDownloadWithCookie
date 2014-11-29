@@ -14,10 +14,10 @@ def getLinks(url):
         for element in line.split():
             if element.startswith('href="http://gr'):
                 if element.endswith('pdf"') or element.endswith('png"') or element.endswith('jpg"'):
-                    result.append(element[6:])
+                    result.append(element[6:-1])
     for char in result:
         slashpos = char.rfind('/') + 1
-        urllib.urlretrieve(char, char[slashpos:-1])
+        urllib.urlretrieve(char, char[slashpos:])
 
 getLinks(files)
 
